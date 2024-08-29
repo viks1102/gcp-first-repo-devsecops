@@ -1,8 +1,8 @@
 steps:
-  - name: 'ubuntu'
-    entrypoint: 'bash'
-    args: ['-c', 'echo "Hello Security Gurus!! This is our first build run in Google Cloud Platform"']
-
+  #Execute SonarCloud Scan
+  - name: maven:3-openjdk-18-slim
+    entrypoint: mvn
+    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=gcp-first-repo-devsecops','-Dsonar.projectKey=viks1102_gcp-first-repo-devsecops','-Dsonar.token=268c1ab316fe4d4639fcd7e91834740f2c93e39c']
 options:
   logging: CLOUD_LOGGING_ONLY
 # serviceAccount: 1052127679932-compute@developer.gserviceaccount.com
