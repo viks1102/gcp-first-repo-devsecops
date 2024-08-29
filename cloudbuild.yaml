@@ -1,3 +1,7 @@
 steps:
-  - name: 'ubuntu'
-    args: ['echo','Hello Security Gurus!! This is our first build run in Google Cloud']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['build', 'submit', '--tag=gcr.io/$PROJECT_ID/my-image']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+serviceAccount: your-service-account@your-project.iam.gserviceaccount.com
