@@ -1,7 +1,9 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['build', 'submit', '--tag=gcr.io/$PROJECT_ID/my-image']
+    args: ['build', 'submit']
 
 options:
   logging: CLOUD_LOGGING_ONLY
-serviceAccount: your-service-account@your-project.iam.gserviceaccount.com
+serviceAccount: 1052127679932-compute@developer.gserviceaccount.com
+
+
