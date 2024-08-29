@@ -1,9 +1,9 @@
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['echo','Hello Security Gurus!! This is our first build run in Google Cloud Platform']
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'echo "Hello Security Gurus!! This is our first build run in Google Cloud Platform"']
 
 options:
   logging: CLOUD_LOGGING_ONLY
-serviceAccount: 1052127679932-compute@developer.gserviceaccount.com
-
+# serviceAccount: 1052127679932-compute@developer.gserviceaccount.com
 
