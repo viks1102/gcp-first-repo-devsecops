@@ -1,6 +1,6 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['build', 'submit']
+    args: ['echo','Hello Security Gurus!! This is our first build run in Google Cloud Platform']
 
 options:
   logging: CLOUD_LOGGING_ONLY
