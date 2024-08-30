@@ -1,17 +1,24 @@
 steps:   
-  #Run Software Composition Analysis (SCA security scan) using Snyk
+#Run DAST scan using OWASP ZAP in GCP DevSecOps Pipeline
   - name: 'ubuntu'
     entrypoint: bash
     args: 
-        - '-c'
-        - |-
-          apt-get update
-          apt-get -y install maven 
-          SNYK_TOKEN=${_SNYK_TOKEN}
-          export SNYK_TOKEN
-          mvn snyk:test -fn 
-    id: Snyk SCA
-    
+      - '-c'
+      - |-
+        apt-get update
+        apt-get -y install wget
+        apt-get -y install default-jdk
+        wget https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2.14.0_Linux.tar.gz
+        tar -xvf ZAP_2.14.0_Linux.tar.gz
+        cd ZAP_2.14.0
+        ./zap.sh -cmd -quickurl https://www.example.com -quickprogress -quickout ../zap_report.html 
+    id: DAST Scan using OWASP ZAP
+artifacts:
+  objects:
+    location: 'gs://owasp_1102'
+    paths:
+      - zap_report.html
+
 options:
   logging: CLOUD_LOGGING_ONLY
 # serviceAccount: 1052127679932-compute@developer.gserviceaccount.com
